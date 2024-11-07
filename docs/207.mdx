@@ -30,7 +30,7 @@ MqttCollect 驱动程序可用于从属设备获取通过 MQTT 协议发送的�
 ## 三、变量地址配置项
 
 
-变量地址：``${mqtt_topic}+${payload_item}``
+变量地址：``${mqtt_topic};${payload_item};${Condition}``
 
 主题：``vendor/device``
 
@@ -41,11 +41,13 @@ MqttCollect 驱动程序可用于从属设备获取通过 MQTT 协议发送的�
         "EquipId":"E12",
         "CarrierId": "C12",
         "SubstrateLocId": "S12",
-        "LotId": "L12",
+        "LotId": 1,
         "DesignId": "D12",
         "EventTime": "12322131"
     }
 }
 ```
 
-比如 ``vendor/device+ModuleUnoccupied.EquipId``，结果是 ``"E12"``
+ 比如 ``vendor/device;ModuleUnoccupied.EquipId`` ，结果是"E12"
+
+ 比如 ``vendor/device;ModuleUnoccupied.EquipId;raw.SelectToken("ModuleUnoccupied.LotId").ToString().ToInt()==1``，结果是"E12"
