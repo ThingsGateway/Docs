@@ -82,3 +82,14 @@ GlobalData.ReadOnlyVariables["变量名称1"].Value.ToInt()+GlobalData.ReadOnlyV
 ```
 
 同理，在内存变量插件中，也可以这样写。
+
+
+#### 9、变量单独设置大小端解析顺序
+
+在变量地址中填写``Data=ABCD``，表示大端顺序
+
+例如modbus读取浮点数 保持寄存器0，大端顺序
+```
+400001;DATA=ABCD;
+
+```
