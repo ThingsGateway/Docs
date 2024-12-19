@@ -65,6 +65,11 @@ module.exports = {
         },
         {
           type: "doc",
+          id: "107",
+          label: "规则引擎"
+        },
+        {
+          type: "doc",
           id: "105",
           label: "网关状态查看"
         },

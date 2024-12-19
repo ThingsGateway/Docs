@@ -1,0 +1,139 @@
+---
+id: 107
+title: 规则引擎
+---
+
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import Tag from "@site/src/components/Tag.js";
+import Highlight from '@site/src/components/Highlight.js';
+
+:::tip `配置须知`
+
+ 更改设备/变量/插件等，需要重启后台(右下角重启后台按钮)
+
+:::
+
+## 一、说明
+
+**ThingsGateway** 网关规则引擎
+
+## 二、设计
+
+### 开始/结束
+
+规则只能由开始节点 作为起点
+
+结束节点不强制需求
+
+### 触发器
+
+#### 报警状态触发器
+
+填写 变量名称 ，当变量报警变化时，进入下一步
+
+#### 设备状态触发器
+
+填写 采集设备名称 ，当设备状态变化时，进入下一步
+
+#### 变量状态触发器
+
+填写 变量名称 ，当变量状态变化时，进入下一步
+
+
+#### 时间间隔触发器
+
+填写 间隔时间(ms) ，当周期时间触发时，进入下一步
+
+### 脚本
+
+#### 条件
+
+脚本返回bool，值为true时进入下一步
+
+#### 数据
+
+脚本返回数据值，可以是任意类型，结果会传入下一步
+
+### 执行
+
+#### RPC写入
+
+填写 变量名称 ，把上一节点的数据写入变量
+
+#### 自定义执行
+
+自定义脚本，脚本类需继承 ``IExexcuteExpressions``
+
+
+接口定义
+```
+namespace ThingsGateway.RulesEngine;
+
+public interface IExexcuteExpressions
+{
+    Task<NodeOutput> ExecuteAsync(NodeInput input, CancellationToken cancellationToken);
+}
+
+```
+
+其他类型
+
+```
+
+using Newtonsoft.Json.Linq;
+
+namespace ThingsGateway.RulesEngine;
+
+public class NodeInput
+{
+    private object input;
+    public JToken JToken
+    {
+        get
+        {
+            return JToken.FromObject(input); ;
+        }
+    }
+
+    public object Value
+    {
+        get
+        {
+            return input;
+        }
+        set
+        {
+            input = value;
+        }
+    }
+}
+
+
+public class NodeOutput
+{
+    private object output;
+    public JToken JToken
+    {
+        get
+        {
+            return JToken.FromObject(output); ;
+        }
+    }
+
+    public object Value
+    {
+        get
+        {
+            return output;
+        }
+        set
+        {
+            output = value;
+        }
+    }
+}
+
+```
+
+接口方法中可自由发挥，比如邮件发送，Webhook等等

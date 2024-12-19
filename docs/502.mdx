@@ -309,3 +309,59 @@ public class AliYunIotScript:IDynamicModel
 
 脚本实际上就是一个C#实现类，需要实现``IDynamicSQL``接口，返回新的list和新实体，该功能需一定的C#知识，以及查阅框架ORM ``SqlSugar`` 的实体定义
 
+
+
+## 五、规则引擎自定义执行脚本
+
+
+```
+
+using ThingsGateway.RulesEngine;
+
+
+public class TestEx : IExexcuteExpressions
+{
+    public async System.Threading.Tasks.Task<NodeOutput> ExecuteAsync(NodeInput input, System.Threading.CancellationToken cancellationToken)
+    {
+
+
+        //任意代码
+
+        //比如自定义RPC
+        {
+            //var rpcData = new Dictionary<string, string>();
+            //rpcData.Add("var2", "2");
+            //rpcData.Add("var3", "3");
+            //var result = await GlobalData.RpcService.InvokeDeviceMethodAsync("testEx", rpcData, cancellationToken).ConfigureAwait(false);
+
+
+            //返回数据，如果不需要，可以返回
+            // return new NodeOutput();
+            return new NodeOutput() { Value = result };
+
+
+        }
+
+        //想上传mqtt，可以自己写mqtt上传代码，或者通过mqtt插件的公开方法上传
+        {
+            //找到对应的MqttClient插件设备
+            var mqttDevice = (ThingsGateway.Plugin.Mqtt.MqttClient)GlobalData.BusinessDeviceHostedService.DriverBases.FirstOrDefault(a => a.DeviceName == "2");
+            if (mqttDevice == null)
+                throw new("mqttDevice NOT FOUND");
+            var result = await mqttDevice.MqttUpAsync("test", "test", default);// 主题 和 负载
+            if (!result.IsSuccess)
+                throw new(result.ErrorMessage);
+            return new NodeOutput() { Value = result };
+        }
+
+
+    }
+}
+
+
+
+
+```
+
+
+
