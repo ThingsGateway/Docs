@@ -321,6 +321,9 @@ using ThingsGateway.RulesEngine;
 
 public class TestEx : IExexcuteExpressions
 {
+
+    public TouchSocket.Core.ILog Logger { get; set; }
+
     public async System.Threading.Tasks.Task<NodeOutput> ExecuteAsync(NodeInput input, System.Threading.CancellationToken cancellationToken)
     {
 
