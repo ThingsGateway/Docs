@@ -316,6 +316,8 @@ public class AliYunIotScript:IDynamicModel
 
 ```
 
+
+using ThingsGateway.Gateway.Application;
 using ThingsGateway.RulesEngine;
 
 
@@ -328,38 +330,43 @@ public class TestEx : IExexcuteExpressions
     {
 
 
-        //任意代码
-
-        //比如自定义RPC
-        {
-            //var rpcData = new Dictionary<string, string>();
-            //rpcData.Add("var2", "2");
-            //rpcData.Add("var3", "3");
-            //var result = await GlobalData.RpcService.InvokeDeviceMethodAsync("testEx", rpcData, cancellationToken).ConfigureAwait(false);
-
-
-            //返回数据，如果不需要，可以返回
-            // return new NodeOutput();
-            return new NodeOutput() { Value = result };
-
-
-        }
-
         //想上传mqtt，可以自己写mqtt上传代码，或者通过mqtt插件的公开方法上传
-        {
-            //找到对应的MqttClient插件设备
-            var mqttDevice = (ThingsGateway.Plugin.Mqtt.MqttClient)GlobalData.BusinessDeviceHostedService.DriverBases.FirstOrDefault(a => a.DeviceName == "2");
-            if (mqttDevice == null)
-                throw new("mqttDevice NOT FOUND");
-            var result = await mqttDevice.MqttUpAsync("test", "test", default);// 主题 和 负载
-            if (!result.IsSuccess)
-                throw new(result.ErrorMessage);
-            return new NodeOutput() { Value = result };
-        }
+
+        //直接获取mqttclient插件类型的第一个设备
+        //var driver = GlobalData.ReadOnlyChannels.FirstOrDefault(a => a.Value.PluginName == "ThingsGateway.Plugin.Mqtt.MqttClient").Value?.ReadDeviceRuntimes?.FirstOrDefault().Value?.Driver;
+        //if (driver != null)
+        //{
+        //    //找到对应的MqttClient插件设备
+        //    var mqttClient = (ThingsGateway.Plugin.Mqtt.MqttClient)driver;
+        //    if (mqttClient == null)
+        //        throw new("mqttClient NOT FOUND");
+        //    var result = await mqttClient.MqttUpAsync("test", "test", default);// 主题 和 负载
+        //    if (!result.IsSuccess)
+        //        throw new(result.ErrorMessage);
+        //    return new NodeOutput() { Value = result };
+        //}
+        //throw new("mqttClient NOT FOUND");
 
 
+        //通过设备名称找出mqttClient插件
+        //var driver = GlobalData.ReadOnlyDevices.FirstOrDefault(a => a.Value.Name == "mqttDevice1").Value?.Driver;
+        //if (driver != null)
+        //{
+        //    //找到对应的MqttClient插件设备
+        //    var mqttClient = (ThingsGateway.Plugin.Mqtt.MqttClient)driver;
+        //    if (mqttClient == null)
+        //        throw new("mqttClient NOT FOUND");
+        //    var result = await mqttClient.MqttUpAsync("test", "test", default);// 主题 和 负载
+        //    if (!result.IsSuccess)
+        //        throw new(result.ErrorMessage);
+        //    return new NodeOutput() { Value = result };
+        //}
+        //throw new("mqttClient NOT FOUND");
     }
 }
+
+
+
 
 
 
