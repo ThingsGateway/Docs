@@ -1,0 +1,39 @@
+---
+id: 100
+title: 驱动调试
+---
+
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import Tag from "@site/src/components/Tag.js";
+import Highlight from '@site/src/components/Highlight.js';
+
+:::tip `配置须知`
+
+网关程序集成的插件调试，从左侧树节点中右键新增窗口
+<img src={require("@site/static/img/docs/驱动调试1.png").default} />
+
+变量地址的格式可从浮动提示中查看，如果插件支持可视化，也可以点击右侧按钮弹出编辑窗口。如需要详细说明，可查看对应的插件章节
+
+:::
+## 一、说明
+
+**ThingsGateway** 网关程序中包含了调试页面，也单独提供跨平台的桌面端调试软件
+
+<img src={require("@site/static/img/docs/驱动调试.png").default} />
+
+下面举例说明Modbus驱动的调试流程
+
+## 二、调试流程
+
+<img src={require("@site/static/img/docs/驱动调试2.png").default} />
+
+2、 查看变量寄存器地址的填写格式
+
+变量地址的格式可从浮动提示中查看，如果插件支持可视化，也可以点击右侧按钮弹出编辑窗口。如需要详细说明，可查看对应的插件章节
+
+<img src={require("@site/static/img/docs/驱动调试3.png").default} />
+
+3、点击读取，可以看到交互的报文以及读取结果
+
+

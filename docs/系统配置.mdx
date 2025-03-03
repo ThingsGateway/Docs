@@ -1,0 +1,60 @@
+---
+id: 103
+title: 系统配置
+---
+
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import Tag from "@site/src/components/Tag.js";
+import Highlight from '@site/src/components/Highlight.js';
+
+
+## 一、双机冗余配置
+
+<img src={require("@site/static/img/docs/双机冗余.png").default} />
+
+### 案例
+
+主站安装在 IP为 192.168.31.252 的机器中。现需实现 主站掉线后，子站自动启动。
+
+
+主站：
+
+<img src={require("@site/static/img/docs/主站.png").default} />
+
+
+
+子站：
+
+<img src={require("@site/static/img/docs/子站.png").default} />
+
+
+## 二、程序更新
+
+刷新表格，选择需要的版本，在右侧操作栏中弹出操作窗口，按提示操作(下载更新、重启软件)
+
+文件配置：
+
+<img src={require("@site/static/img/docs/程序更新配置.png").default} />
+
+找到该配置文件，填入更新服务器IP和其他参数。 默认不启用该功能。
+
+
+## 三、网关重启
+
+点击按钮，重启软件
+
+
+文件配置：
+
+<img src={require("@site/static/img/docs/网关重启配置.png").default} />
+
+找到该配置文件，填入参数。
+
+:::tip 提示
+
+启动方式：DOTNET： （直接启动） 
+
+如果网关软件已经部署为失败自动重启的服务形式，那么该参数应为空，
+
+:::

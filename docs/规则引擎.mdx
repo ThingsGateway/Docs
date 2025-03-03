@@ -1,0 +1,228 @@
+---
+id: 107
+title: 规则引擎
+---
+
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import Tag from "@site/src/components/Tag.js";
+import Highlight from '@site/src/components/Highlight.js';
+
+## 一、说明
+
+**ThingsGateway** 网关规则引擎
+
+触发器：
+
+- 报警状态触发器
+- 设备状态触发器
+- 变量状态触发器
+- 时间间隔触发器
+
+
+执行器：
+
+- RPC写入
+- 自定义脚本
+
+其他：
+
+- 自定义数据脚本
+- 条件脚本
+
+## 二、设计
+
+### 2.1、开始/结束
+
+规则只能由开始节点 作为起点
+
+结束节点不强制需求
+
+### 2.2、触发器
+
+<img src={require("@site/static/img/docs/规则引擎1.png").default} />
+
+
+
+#### 报警状态触发器
+
+填写 变量名称 ，当变量报警变化时，进入下一步
+
+#### 设备状态触发器
+
+填写 采集设备名称 ，当设备状态变化时，进入下一步
+
+#### 变量状态触发器
+
+填写 变量名称 ，当变量状态变化时，进入下一步
+
+
+#### 时间间隔触发器
+
+填写 间隔时间(ms) ，当周期时间触发时，进入下一步
+
+### 2.3、脚本
+
+#### 条件
+
+脚本返回bool，值为true时进入下一步
+
+#### 数据
+
+脚本返回数据值，可以是任意类型，结果会传入下一步
+
+### 2.4、执行
+
+#### RPC写入
+
+填写 变量名称 ，把上一节点的数据写入变量
+
+#### 自定义执行
+
+自定义脚本，脚本类需继承 ``IExexcuteExpressions``
+
+接口定义
+```
+namespace ThingsGateway.RulesEngine;
+
+public interface IExexcuteExpressions
+{
+
+    public TouchSocket.Core.ILog Logger { get; set; }
+    
+    Task<NodeOutput> ExecuteAsync(NodeInput input, CancellationToken cancellationToken);
+}
+
+```
+
+其他类型
+
+```
+
+using Newtonsoft.Json.Linq;
+
+namespace ThingsGateway.RulesEngine;
+
+public class NodeInput
+{
+    private object input;
+    public JToken JToken
+    {
+        get
+        {
+            return JToken.FromObject(input); ;
+        }
+    }
+
+    public object Value
+    {
+        get
+        {
+            return input;
+        }
+        set
+        {
+            input = value;
+        }
+    }
+}
+
+
+public class NodeOutput
+{
+    private object output;
+    public JToken JToken
+    {
+        get
+        {
+            return JToken.FromObject(output); ;
+        }
+    }
+
+    public object Value
+    {
+        get
+        {
+            return output;
+        }
+        set
+        {
+            output = value;
+        }
+    }
+}
+
+```
+
+接口方法中可自由发挥，比如邮件发送，Webhook等等
+
+
+
+
+
+#### 案例
+
+
+```
+
+
+using ThingsGateway.Gateway.Application;
+using ThingsGateway.RulesEngine;
+
+
+public class TestEx : IExexcuteExpressions
+{
+
+    public TouchSocket.Core.ILog Logger { get; set; }
+
+    public async System.Threading.Tasks.Task<NodeOutput> ExecuteAsync(NodeInput input, System.Threading.CancellationToken cancellationToken)
+    {
+
+
+        //想上传mqtt，可以自己写mqtt上传代码，或者通过mqtt插件的公开方法上传
+
+        //直接获取mqttclient插件类型的第一个设备
+        //var driver = GlobalData.ReadOnlyChannels.FirstOrDefault(a => a.Value.PluginName == "ThingsGateway.Plugin.Mqtt.MqttClient").Value?.ReadDeviceRuntimes?.FirstOrDefault().Value?.Driver;
+        //if (driver != null)
+        //{
+        //    //找到对应的MqttClient插件设备
+        //    var mqttClient = (ThingsGateway.Plugin.Mqtt.MqttClient)driver;
+        //    if (mqttClient == null)
+        //        throw new("mqttClient NOT FOUND");
+        //    var result = await mqttClient.MqttUpAsync("test", "test", default);// 主题 和 负载
+        //    if (!result.IsSuccess)
+        //        throw new(result.ErrorMessage);
+        //    return new NodeOutput() { Value = result };
+        //}
+        //throw new("mqttClient NOT FOUND");
+
+
+        //通过设备名称找出mqttClient插件
+        //var driver = GlobalData.ReadOnlyDevices.FirstOrDefault(a => a.Value.Name == "mqttDevice1").Value?.Driver;
+        //if (driver != null)
+        //{
+        //    //找到对应的MqttClient插件设备
+        //    var mqttClient = (ThingsGateway.Plugin.Mqtt.MqttClient)driver;
+        //    if (mqttClient == null)
+        //        throw new("mqttClient NOT FOUND");
+        //    var result = await mqttClient.MqttUpAsync("test", "test", default);// 主题 和 负载
+        //    if (!result.IsSuccess)
+        //        throw new(result.ErrorMessage);
+        //    return new NodeOutput() { Value = result };
+        //}
+        //throw new("mqttClient NOT FOUND");
+    }
+}
+
+
+
+
+
+
+
+```
+
+
+## 三、日志查看
+
+<img src={require("@site/static/img/docs/规则引擎2.png").default} />

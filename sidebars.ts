@@ -29,39 +29,27 @@ module.exports = {
     
     {
       type: "doc",
-      id: "40001",
-      label: "软件配置"
+      id: "4",
+      label: "配置文件"
     },
     {
       type: "category",
       label: "基础手册",
       items: [
         {
-          type: "category",
-          label: "网关配置",
-          items: [
-
-            {
-              type: "doc",
-              id: "101",
-              label: "插件管理"
-            },
-            {
-              type: "doc",
-              id: "102",
-              label: "通道管理"
-            },
-            {
-              type: "doc",
-              id: "103",
-              label: "设备"
-            },
-            {
-              type: "doc",
-              id: "104",
-              label: "变量"
-            },
-          ]
+          type: "doc",
+          id: "103",
+          label: "系统配置"
+        },
+        {
+          type: "doc",
+          id: "101",
+          label: "插件管理"
+        },
+        {
+          type: "doc",
+          id: "102",
+          label: "网关监控"
         },
         {
           type: "doc",
@@ -71,7 +59,7 @@ module.exports = {
         {
           type: "doc",
           id: "105",
-          label: "网关状态查看"
+          label: "实时报警"
         },
         {
           type: "doc",

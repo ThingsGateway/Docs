@@ -1,0 +1,31 @@
+---
+id: 101
+title: 插件管理
+---
+
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import Tag from "@site/src/components/Tag.js";
+import Highlight from '@site/src/components/Highlight.js';
+
+## 一、说明
+
+**ThingsGateway** 网关的交互代码都由插件完成，主程序只负责调度执行
+
+插件支持热重载，可由外部上传到网关中
+
+## 二、上传插件
+
+
+<img src={require("@site/static/img/docs/插件管理1.png").default} />
+
+## 二、手动重载插件
+
+点击 `重载` 按钮执行手动重载
+
+
+:::tip 提示
+
+插件重新检测文件后，运行态的插件不会发送任何改变。如果立即生效，请手动点击网关重启按钮
+
+:::

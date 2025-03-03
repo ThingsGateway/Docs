@@ -1,0 +1,36 @@
+---
+id: 4
+title: 配置文件
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import Tag from "@site/src/components/Tag.js";
+import Highlight from '@site/src/components/Highlight.js';
+
+
+:::tip `提示`
+
+ 默认直接启动即可，无需配置即可正常使用
+
+:::
+
+:::tip `提示`
+
+dotnet应用可以在 启动指令中 添加urls参数，指定启动端口，也可配置 ``appsettings.json`` 文件
+
+```
+  "urls": "http://*:5000"
+```
+
+:::
+
+
+## 一、配置文件
+
+<img src={require("@site/static/img/docs/软件配置1.png").default} />
+
+
+**ThingsGateway** 默认使用 ``Sqlite`` 数据库，方便部署，也可以通过配置 ``Database.json`` 文件，修改数据库配置
+
+
+其他日志配置等内容查看对应描述，按需修改
