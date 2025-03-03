@@ -53,7 +53,7 @@ function Banner() {
             <li>
               驱动库 支持 .NET Framework 4.5及以上，.NET Standard2.0及以上
             </li>
-            <li>网关 支持 .NET 6/8</li>
+            <li>网关 支持 .NET 8</li>
             <li>极速上手，极简使用</li>
           </ul>
           <div className="ThingsGateway-support-platform">受支持平台：</div>
@@ -111,7 +111,7 @@ function Gitee() {
             className={"ThingsGateway-log-jiao" + (isDarkTheme ? " dark" : "")}
           ></div>
           <div className="ThingsGateway-log-number">
-            <div style={{ color: "#723cff" }}>1085 +</div>
+            <div style={{ color: "#723cff" }}>1142 +</div>
             <span className={isDarkTheme ? " dark" : ""}>Stars</span>
           </div>
         </div>
@@ -123,7 +123,7 @@ function Gitee() {
             className={"ThingsGateway-log-jiao" + (isDarkTheme ? " dark" : "")}
           ></div>
           <div className="ThingsGateway-log-number">
-            <div style={{ color: "#3fbbfe" }}>326 +</div>
+            <div style={{ color: "#3fbbfe" }}>346 +</div>
             <span className={isDarkTheme ? " dark" : ""}>Forks</span>
           </div>
         </div>
@@ -135,7 +135,7 @@ function Gitee() {
             className={"ThingsGateway-log-jiao" + (isDarkTheme ? " dark" : "")}
           ></div>
           <div className="ThingsGateway-log-number">
-            <div style={{ color: "#1fd898" }}>81,421 +</div>
+            <div style={{ color: "#1fd898" }}>109,101 +</div>
             <span className={isDarkTheme ? " dark" : ""}>Downloads</span>
           </div>
         </div>
