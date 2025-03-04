@@ -80,7 +80,7 @@ function Banner() {
           <div className="ThingsGateway-get-start-btn">
             <Link className="ThingsGateway-get-start" to={useBaseUrl("docs")}>
               入门指南
-              <span className="ThingsGateway-version">v7.0</span>
+              <span className="ThingsGateway-version">v10</span>
             </Link>
           </div>
         </div>

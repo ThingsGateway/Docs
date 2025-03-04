@@ -105,11 +105,6 @@ module.exports = {
 
         {
           type: "doc",
-          id: "206",
-          label: "VariableExpression"
-        },
-        {
-          type: "doc",
           id: "207",
           label: "MqttCollect"
         }
@@ -221,20 +216,9 @@ module.exports = {
       ]
     },
     {
-      type: "category",
-      label: "常见问题",
-      items: [
-        {
-          type: "doc",
-          id: "501",
-          label: "常见问题"
-        },
-        {
-          type: "doc",
-          id: "502",
-          label: "脚本常见问题"
-        },
-      ]
+      type: "doc",
+      id: "501",
+      label: "常见问题"
     },
     {
       type: "category",

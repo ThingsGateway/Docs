@@ -7,9 +7,21 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import Tag from "@site/src/components/Tag.js";
 import Highlight from '@site/src/components/Highlight.js';
 
+### v10.1
+
+
+- &nbsp;<Tag>调整</Tag> 变量名称 由 全局唯一 更改为 采集设备内唯一
+
+破坏性更新：
+
+1、兼容v10.0版本数据库，但不兼容v10.0版本excel文件，不同点在于变量excel 业务属性页，添加了设备名称和业务设备名称，旧版本只有业务设备名称。
+
+2、业务默认上传内容更改为 字典类型，键为设备名称，值为变量列表。变量列表内容与旧版本相同。
+
+3、rpc参数更改为 字典类型，键为设备名称，值为变量字典(包含变量名称和写入值)。
+
 
 ### v10.0
-
 
 - &nbsp;<Tag>调整</Tag> 重构网关UI，网关页面以树节点显示通道-设备-变量为主，优化多处操作体验
 

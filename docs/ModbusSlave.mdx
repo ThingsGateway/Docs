@@ -1,0 +1,49 @@
+---
+id: 201
+title: ModbusSlave
+---
+
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import Tag from "@site/src/components/Tag.js";
+import Highlight from '@site/src/components/Highlight.js';
+
+
+## 一、说明
+
+ModbusSlave作为从站，响应主站的采集报文
+
+插件支持modbusTcp/modbusRtu格式报文
+
+通讯链路支持 TcpClient/TcpService(DTU)/串口/Udp
+
+## 二、插件属性配置项
+
+<img src={require("@site/static/img/docs/ModbusSlave1.png").default} />
+
+| 属性           |  说明                    | 备注|
+| ---------------| --------------------------| ---|
+| Modbus协议类型         | modbusTcp/modbusRtu格式报文           | |
+| 默认站号         | 默认的mudbus站号id            | **变量可单独配置站号**   |
+| 解析顺序         | 4个字节以上的数据解析，可设置为ABCD/BADC/CDBA/DCBA,默认ABCD , **变量可单独配置**|ABCD：Big-Endian<br></br>BADC：Big-Endian Byte Swap<br></br>CDAB：Little-Endian Byte Swap<br></br>DCBA：Little-Endian |
+| 字符串反转         | 字符串变量按字为单位调换              | false |
+| 客户端连接滑动过期时间         |  没有发送/收到消息 ，n分钟后断开连接             | 仅适用于TcpService链路（DTU模式）|
+| 最大连接数         |  最大客户端数量限制             | |
+| 多站点         | 是否区分不同的站号的数据              | true|
+| 允许写入         | 写入权限使能              | Flase |
+| 立即写入内存         | 外部写入时，是否立即写入内存池              | Flase |
+| DTU注册包         |  初始连接时会发送一次             | 仅适用于TcpClient链路（DTU模式）|
+| 心跳检测         |  自动发送心跳内容             | 仅适用于TcpClient链路（DTU模式）|
+| 心跳间隔         |  发送心跳间隔             | 仅适用于TcpClient链路（DTU模式）|
+
+## 三、变量业务属性
+
+<img src={require("@site/static/img/docs/ModbusSlave2.png").default} />
+
+| 属性           |  说明                    | 备注|
+| ---------------| --------------------------| ---|
+| 寄存器地址         | 请查看[Modbus寄存器格式](./ModbusMatser.mdx#三、变量地址配置项)            | |
+| 数据类型         | Modbus寄存器数据类型           |    |
+| 允许写入         | 单独设置变量在该Modbus服务器中是否允许被写入| |
+| Enable         | 是否启用              | true |
+

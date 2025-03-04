@@ -1,0 +1,41 @@
+---
+id: 306
+title: QuestDBProducer
+---
+
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import Tag from "@site/src/components/Tag.js";
+import Highlight from '@site/src/components/Highlight.js';
+
+ 
+ 
+## 一、说明
+
+QuestDBProducer适配QuestDB时序数据库，可以定时/变化存储变量数据
+
+通道只支持 Other 
+
+## 二、插件属性配置项
+
+<img src={require("@site/static/img/docs/QuestDBProducer1.png").default} />
+
+| 属性           |  说明                    | 备注|
+| ---------------| --------------------------| ---|
+| 链接字符串         | 链接字符串              | |
+| 表名称         | 超级表名称，子表名称为 [超级表名称]_变量名称     |  |
+| 是否选择全部变量         | 是否选择全部变量，true时不需要单个变量添加业务属性            |  |
+| 上传模式         | 间隔/变化/变化和间隔同时生效            |  |
+| 定时上传间隔         | 间隔执行时间           |  |
+| 启用缓存         | 是否启用缓存           |  |
+| 缓存文件最大长度(mb)         | 缓存文件最大长度           |  |
+| 上传每页条数         | 每一次上传的列表最大数量           |  |
+| 内存队列最大数量         | 内存队列的最大数量，超出或失败时转入文件缓存，根据数据量设定适当值           |  |
+| 历史库动态脚本         | 历史库动态脚本           |  |
+
+
+
+## 三、脚本与实体
+查看TaosData页面[脚本接口](./TDengineDBProducer.mdx#脚本接口) 
+
+
