@@ -71,6 +71,20 @@ import Highlight from '@site/src/components/Highlight.js';
 
 脚本返回数据值，可以是任意类型，结果会传入下一步
 
+<img src={require("@site/static/img/docs/规则引擎3.png").default} />
+
+
+例子
+
+```
+//raw是上一个节点传入值
+
+return (JToken.FromObject(raw))["Value"];
+
+``` 
+
+
+
 ### 2.4、执行
 
 #### RPC写入
