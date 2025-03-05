@@ -126,6 +126,30 @@ import Highlight from '@site/src/components/Highlight.js';
 |写入表达式| 动态解析的表达式，在写入值时转化,原始值的代码为raw|示例：``raw.ToInt()/10`` 结果：写入值为230时，会下发23到PLC 。|
 |备用字段| 存储自定义信息 |
 
+:::tip `表达式说明`
+
+raw是object类型，需要在脚本内自行转换
+
+如果是已知类型，可以强转，比如 ((int)raw)*10
+
+也可以直接转换，自带扩展方法如下
+
+```
+
+ToInt()
+
+ToBoolean()
+
+ToDouble()
+
+ToDecimal()
+
+ToLong()
+
+```
+:::
+
+
 #### 报警属性配置项
 
 <img src={require("@site/static/img/docs/变量配置2.png").default} />
