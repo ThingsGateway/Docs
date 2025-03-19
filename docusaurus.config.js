@@ -8,8 +8,8 @@ import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: "thingsgateway",
-    tagline: "物联网",
+  title: "thingsgateway",
+  tagline: "物联网",
   url: "https://thingsgateway.cn/",
   baseUrl: '/',
   onBrokenLinks: "throw",
@@ -83,8 +83,8 @@ const config = {
       navbar: {
         title: "ThingsGateway",
         logo: {
-            alt: "ThingsGateway Logo",
-            src: "img/ThingsGatewayLogo.png",
+          alt: "ThingsGateway Logo",
+          src: "img/ThingsGatewayLogo.png",
         },
         hideOnScroll: true,
         items: [
@@ -109,11 +109,15 @@ const config = {
             items: [
               {
                 label: "Gitee（主库）",
-              href: "https://gitee.com/ThingsGateway/ThingsGateway",
+                href: "https://gitee.com/ThingsGateway/ThingsGateway",
               },
               {
                 label: "GitHub",
-              href: "https://github.com/ThingsGateway/ThingsGateway",
+                href: "https://github.com/ThingsGateway/ThingsGateway",
+              },
+              {
+                label: "GitCode",
+                href: "https://gitcode.com/ThingsGateway/ThingsGateway",
               },
               {
                 label: "Nuget",
@@ -121,7 +125,7 @@ const config = {
               },
             ],
           }
- 
+
         ],
       },
       footer: {
@@ -132,11 +136,11 @@ const config = {
             items: [
               {
                 label: "入门",
-              to: "docs",
+                to: "docs",
               },
               {
                 label: "手册",
-              to: "docs",
+                to: "docs",
               },
             ],
           },
@@ -145,11 +149,11 @@ const config = {
             items: [
               {
                 label: "讨论",
-              href: "https://gitee.com/diego2098/ThingsGateway/issues",
+                href: "https://gitee.com/diego2098/ThingsGateway/issues",
               },
               {
                 label: "看板",
-              href: "https://gitee.com/diego2098/ThingsGateway/board",
+                href: "https://gitee.com/diego2098/ThingsGateway/board",
               },
             ],
           },
@@ -158,12 +162,12 @@ const config = {
             items: [
               {
                 label: "仓库",
-              href: "https://gitee.com/diego2098/ThingsGateway",
+                href: "https://gitee.com/diego2098/ThingsGateway",
               }
             ],
           },
         ],
-      copyright: `Copyright © 2020-${new Date().getFullYear()} Diego  <a href="https://beian.miit.gov.cn/">粤ICP备2024310170号-1</a>`,
+        copyright: `Copyright © 2020-${new Date().getFullYear()} Diego  <a href="https://beian.miit.gov.cn/">粤ICP备2024310170号-1</a>`,
       },
       mermaid: {
         theme: { light: 'neutral', dark: 'forest' },
