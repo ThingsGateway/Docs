@@ -38,27 +38,22 @@ TDengineDBProducer适配TDengineDB时序数据库，可以定时/变化存储变
 #### 3.1、脚本接口
 ```
 
+
 public abstract class DynamicSQLBase
 {
     public TouchSocket.Core.ILog LogMessage { get; set; }
-    public virtual IEnumerable<dynamic> GetList(IEnumerable<object> datas)
-    {
-        throw new NotSupportedException();
-    }
-    public virtual Type GetModelType()
-    {
-        throw new NotSupportedException();
-    }
 
     /// <summary>
-    /// false=>实现<see cref="GetList(IEnumerable{object})"/>和<see cref="GetModelType"/>
-    /// 
-    /// true=>实现<see cref="DBInsertable(ISqlSugarClient, IEnumerable{object},CancellationToken)"/>
+    /// 建库建表
     /// </summary>
-    public virtual bool ManualUpload { get; set; }
+    /// <returns></returns>
+    public virtual Task DBInit(ISqlSugarClient db, CancellationToken cancellationToken)
+    {
+        throw new NotSupportedException();
+    }
 
     /// <summary>
-    /// 完全自定义上传
+    /// 自定义上传
     /// </summary>
     /// <returns></returns>
     public virtual Task DBInsertable(ISqlSugarClient db, IEnumerable<object> datas, CancellationToken cancellationToken)
@@ -68,20 +63,14 @@ public abstract class DynamicSQLBase
 }
 
 
+
 ```
 
 
-脚本定义了两种模式：
+##### 完全自定义上传
 
-1、实现自定义实体特性，返回内容
+在``DBInsertable``方法中，自主实现上传逻辑，自定义Sql语句或通过orm执行
 
-脚本中定义新的实体类型，在``GetModelType``方法中返回Type，``GetList``方法传入内容，按新实体建立List后返回
-
-2、完全自定义上传
-
-``ManualUpload`` 属性设置为True
-
-在``DBInsertable``方法中，自主实现上传逻辑，自定义Sql语句
 
 #### 3.2、脚本传入内容
 
