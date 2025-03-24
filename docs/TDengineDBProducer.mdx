@@ -72,6 +72,71 @@ public abstract class DynamicSQLBase
 在``DBInsertable``方法中，自主实现上传逻辑，自定义Sql语句或通过orm执行
 
 
+##### Demo
+
+```
+
+
+using ThingsGateway.Plugin.DB;
+using SqlSugar;
+using System.Text;
+using ThingsGateway.Gateway.Application;
+using TouchSocket.Core;
+
+public class Taos : DynamicSQLBase
+{
+    public override async Task DBInsertable(ISqlSugarClient db, IEnumerable<object> datas, CancellationToken cancellationToken)
+    {
+        StringBuilder stringBuilder = new();
+        stringBuilder.Append($"INSERT INTO");
+        var dbInserts = datas.Cast<IDBHistoryValue>();
+        //(`id`,`createtime`,`collecttime`,`isonline`,`value`) 
+        foreach (var deviceGroup in dbInserts.GroupBy(a => a.DeviceName))
+        {
+            foreach (var variableGroup in deviceGroup.GroupBy(a => a.Name))
+            {
+                stringBuilder.Append($"""
+
+                     `tablename1_{deviceGroup.Key}_{variableGroup.Key}` 
+                     USING `tablename1` TAGS ("{deviceGroup.Key}", "{variableGroup.Key}") 
+                    VALUES 
+
+                    """);
+
+                foreach (var item in variableGroup)
+                {
+                    stringBuilder.Append($"""(NOW,"{item.CollectTime.ToString("yyyy-MM-dd HH:mm:ss.fff")}",{item.Id},{item.IsOnline},"{item.Value}"),""");
+                }
+                stringBuilder.Remove(stringBuilder.Length - 1, 1);
+            }
+
+        }
+        stringBuilder.Append(';');
+        stringBuilder.AppendLine();
+
+        await db.Ado.ExecuteCommandAsync(stringBuilder.ToString(), default, cancellationToken: cancellationToken).ConfigureAwait(false);
+        LogMessage?.Trace($"Count {datas.Count()}");
+    }
+    public override async Task DBInit(ISqlSugarClient db, CancellationToken cancellationToken)
+    {
+
+        var sql = $"""
+                CREATE STABLE IF NOT EXISTS  `tablename1`(
+                `createtime` TIMESTAMP   ,
+                `collecttime` TIMESTAMP   ,
+                `id` BIGINT   ,
+                `isonline` BOOL   ,
+                `value` VARCHAR(255)    ) TAGS(`devicename`  VARCHAR(100) ,`name`  VARCHAR(100))
+                """;
+        await db.Ado.ExecuteCommandAsync(sql, default, cancellationToken: cancellationToken).ConfigureAwait(false);
+    }
+
+}
+
+```
+
+
+
 #### 3.2、脚本传入内容
 
 
