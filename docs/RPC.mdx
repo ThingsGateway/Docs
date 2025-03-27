@@ -1,0 +1,50 @@
+---
+id: 502
+title: RPC反写
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import Tag from "@site/src/components/Tag.js";
+import Highlight from '@site/src/components/Highlight.js';
+
+
+## 一、WEBAPI
+
+开发环境下，打开swagger(http://localhost:5000/api/index.html)
+
+
+<img src={require("@site/static/img/docs/WEBAPI.png").default} />
+
+请求参数为``Dictionary<string,Dictionary<string, string>>``，比如
+
+```
+{
+ "modbusDevice650922399363167":
+    {
+      "modbus41":"1",
+      "modbus42":"2"
+      
+    }
+    
+}
+
+```
+
+键为设备名称，值为变量字典(包含变量名称和写入值)
+
+
+## 二、MQTTRPC
+
+查看MqttClient插件页面[脚本传入内容](./MqttClient.mdx#四rpc) 
+
+## 三、ModbusSlave
+
+modbus服务端写入，查看对应插件配置
+
+## 四、OPCUAServer
+
+opcua服务端写入，查看对应插件配置
+
+## 五、规则引擎
+
+规则引擎灵活性非常大, 可用自定义脚本获取数据后写入

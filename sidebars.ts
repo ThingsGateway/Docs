@@ -221,6 +221,11 @@ module.exports = {
       label: "常见问题"
     },
     {
+      type: "doc",
+      id: "502",
+      label: "RPC反写"
+    },
+    {
       type: "category",
       label: "插件开发",
       items: [
