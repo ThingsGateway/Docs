@@ -113,6 +113,11 @@ const config = {
             to: "docs/video"
           },
           {
+            label: "演示",
+            position: "right",
+            href: "http://47.119.161.158:5000/",
+          },
+          {
             label: "源码",
             position: "right",
             items: [
