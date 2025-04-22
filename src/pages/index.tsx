@@ -111,7 +111,7 @@ function Gitee() {
             className={"ThingsGateway-log-jiao" + (isDarkTheme ? " dark" : "")}
           ></div>
           <div className="ThingsGateway-log-number">
-            <div style={{ color: "#723cff" }}>1165 +</div>
+            <div style={{ color: "#723cff" }}>1189 +</div>
             <span className={isDarkTheme ? " dark" : ""}>Stars</span>
           </div>
         </div>
@@ -123,7 +123,7 @@ function Gitee() {
             className={"ThingsGateway-log-jiao" + (isDarkTheme ? " dark" : "")}
           ></div>
           <div className="ThingsGateway-log-number">
-            <div style={{ color: "#3fbbfe" }}>347 +</div>
+            <div style={{ color: "#3fbbfe" }}>357 +</div>
             <span className={isDarkTheme ? " dark" : ""}>Forks</span>
           </div>
         </div>
@@ -135,7 +135,7 @@ function Gitee() {
             className={"ThingsGateway-log-jiao" + (isDarkTheme ? " dark" : "")}
           ></div>
           <div className="ThingsGateway-log-number">
-            <div style={{ color: "#1fd898" }}>129,595 +</div>
+            <div style={{ color: "#1fd898" }}>157,612 +</div>
             <span className={isDarkTheme ? " dark" : ""}>Downloads</span>
           </div>
         </div>

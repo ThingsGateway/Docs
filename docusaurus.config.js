@@ -115,7 +115,7 @@ const config = {
           {
             label: "演示",
             position: "right",
-            href: "http://47.119.161.158:5000/",
+            href: "https://demo.thingsgateway.cn/",
           },
           {
             label: "源码",
