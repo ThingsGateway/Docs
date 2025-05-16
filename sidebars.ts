@@ -225,6 +225,11 @@ module.exports = {
       id: "502",
       label: "RPC反写"
     },
+        {
+      type: "doc",
+      id: "503",
+      label: "Dtu使用"
+    },
     {
       type: "category",
       label: "插件开发",
