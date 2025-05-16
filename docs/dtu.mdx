@@ -60,7 +60,7 @@ DTU设备->>网关TcpService: 初始发送Dtu注册包
 网关TcpService->>网关: 识别DTU身份 -> 绑定到设备实体
 DTU设备->>网关TcpService: 周期发送心跳
 网关TcpService-->>DTU设备: 返回心跳
-DTU设备->>网关TcpService: 透传采集协议交互（如ModbusTcp、IEC104等）
+DTU设备->>网关TcpService: 透传采集协议交互（如Modbus、Dlt645等）
 
 ```
 
