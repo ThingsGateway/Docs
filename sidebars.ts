@@ -166,6 +166,11 @@ module.exports = {
           id: "309",
           label: "OpcUaServer"
         },
+         {
+          type: "doc",
+          id: "310",
+          label: "Synchronization"
+        },
       ]
     },
     {

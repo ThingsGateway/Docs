@@ -1,0 +1,32 @@
+---
+id: 310
+title: 数据同步插件
+---
+
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import Tag from "@site/src/components/Tag.js";
+import Highlight from '@site/src/components/Highlight.js';
+
+ 
+## 一、说明
+
+Synchronization 用于 ThingsGateway 不同实例进程的 数据同步，包含运行态数据同步，以及强制同步数据库配置(通道、设备、变量)
+
+通道只支持 Other 
+
+## 二、插件属性配置项
+
+<img src={require("@site/static/img/docs/Synchronization.png").default} />
+
+| 属性           |  说明                    | 备注|
+| ---------------| --------------------------| ---|
+| 是否选择全部变量         | 是否选择全部变量，true时不需要单个变量添加业务属性，只有主站需要添加变量            |  |
+| 是否Tcp服务         | 是否开启Tcp服务,等待其他实例连接  | 开放该配置，以适应不同的网络环境，主站可以作为TcpClient，也可以作为TcpService启动   |
+| 是否主站         | 是否主站，主站会主动同步运行态数据到其他实例           |  |
+| 服务Uri         | Tcp服务 IP端口           | 192.168.1.1:7777  |
+| 验证令牌         | 不同实例的令牌需一致 | |
+| 心跳间隔         | 服务与客户端之间的心跳间隔时间              |  |
+| 同步间隔         | 主站会主动同步运行态数据到其他实例的间隔时间              |  |
+
+
