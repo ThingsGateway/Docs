@@ -30,3 +30,21 @@ Synchronization 用于 ThingsGateway 不同实例进程的 数据同步，包含
 | 同步间隔         | 主站会主动同步运行态数据到其他实例的间隔时间              |  |
 
 
+## 案例
+
+1、实例1配置，启动Tcp服务，作为主站(数据源)。
+
+<img src={require("@site/static/img/docs/Synchronization1.png").default} />
+
+2、实例2配置，启动Tcp连接，作为数据目标
+
+<img src={require("@site/static/img/docs/Synchronization2.png").default} />
+
+3、如上图配置后，实例1中的数据会主动发送到实例2中进行同步，前提是实例2中也配置了相同名称的通道/设备/变量，或者可以进行强制配置同步
+
+<img src={require("@site/static/img/docs/Synchronization3.png").default} />
+
+
+4、执行强制同步之后，实例2会主动获取一次实例1中的变量等配置， 实例2中可以看到主站中的相关配置了，再查看对应的变量，也是在线状态
+
+<img src={require("@site/static/img/docs/Synchronization4.png").default} />
