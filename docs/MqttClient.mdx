@@ -487,7 +487,7 @@ using ThingsGateway.Foundation;
 using ThingsGateway.NewLife.Extension;
 using ThingsGateway.NewLife.Json.Extension;
 
-namespace ThingsGateway.Plugin.Mqtt;
+using ThingsGateway.Plugin.Mqtt;
 
 
 public class DynamicMqttClientRpc:DynamicMqttClientRpcBase
@@ -507,10 +507,9 @@ public class DynamicMqttClientRpc:DynamicMqttClientRpcBase
     {
 
         if (driverPropertys.RpcWriteTopic.IsNullOrWhiteSpace()) return;
-        var t = string.Format(null, "{0}/+", driverPropertys.RpcWriteTopic);
-        if (MqttTopicFilterComparer.Compare(args.ApplicationMessage.Topic, t) != MqttTopicFilterCompareResult.IsMatch)
-            return;
+       if(args.ApplicationMessage.Topic != driverPropertys.RpcWriteTopic) return;
 
+        
         var rpcDatas = Encoding.UTF8.GetString(args.ApplicationMessage.Payload).FromJsonNetString<Dictionary<string, Dictionary<string, JToken>>>();
         if (rpcDatas == null)
             return;
