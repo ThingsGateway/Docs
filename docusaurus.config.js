@@ -115,7 +115,16 @@ const config = {
           {
             label: "演示",
             position: "right",
-            href: "https://demo.thingsgateway.cn/",
+            items: [
+              {
+                label: "网关",
+                href: "https://demo.thingsgateway.cn/",
+              },
+              {
+                label: "网关管理",
+                href: "https://management.thingsgateway.cn/",
+              }
+            ],
           },
           {
             label: "源码",

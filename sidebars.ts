@@ -166,21 +166,17 @@ module.exports = {
           id: "309",
           label: "OpcUaServer"
         },
-         {
-          type: "doc",
-          id: "310",
-          label: "Synchronization"
-        },
+
       ]
     },
     {
       type: "category",
       label: "Pro插件手册",
       items: [
-        {
+          {
           type: "doc",
-          id: "10001",
-          label: "ABCipMatser"
+          id: "310",
+          label: "Synchronization"
         },
       ]
     },
