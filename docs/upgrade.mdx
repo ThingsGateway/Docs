@@ -7,6 +7,20 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import Tag from "@site/src/components/Tag.js";
 import Highlight from '@site/src/components/Highlight.js';
 
+
+### v10.12
+
+在 **v10.12.1** 版本中，对 **内存回收机制（GC）** 与 **异步状态机** 进行了重点优化。  
+根据对比测试结果：
+
+- 🧩 **内存分配速率（Allocated MB/min）** 同比下降 **55%**  
+- 💾 **堆内存占用（Heap Size）** 同比下降 **11%**
+
+下图展示了在 **100 Device + 100 万 Variable、1 秒采集周期** 条件下的 **dotMemory 内存监控视图**：
+
+<img src={require("@site/static/img/docs/dotmemory-screenshot-v10.12.png").default} />
+
+
 ### v10.4
 
 #### PRO 授权调整公告
