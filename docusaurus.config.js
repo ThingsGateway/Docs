@@ -35,7 +35,7 @@ const config = {
       },
     ],
   ],
-  
+
   presets: [
     [
       'classic',
@@ -102,6 +102,7 @@ const config = {
             position: "left",
             to: "docs/upgrade"
           },
+
           {
             label: "博客",
             position: "left",
@@ -112,6 +113,12 @@ const config = {
             position: "left",
             to: "docs/video"
           },
+          {
+            label: "Wiki",
+            position: "left",
+            href: "https://deepwiki.com/ThingsGateway/ThingsGateway"
+          },
+
           {
             label: "演示",
             position: "right",
