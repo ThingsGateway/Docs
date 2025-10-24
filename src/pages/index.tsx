@@ -18,42 +18,14 @@ function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
 
-  // ✅ 添加弹窗状态
-  const [showPopup, setShowPopup] = React.useState(false);
 
-  React.useEffect(() => {
-    // 页面刷新（或首次加载）时触发弹窗
-    setShowPopup(true);
-  }, []);
 
   return (
     <Layout title={`ThingsGateway 说明文档。 ${siteConfig.title}`} description="ThingsGateway 说明文档">
       <Banner />
       <Gitee />
 
-      {/* ✅ 弹窗区域 */}
-      {showPopup && (
-        <div className="popup-overlay">
-          <div className="popup-window">
-            <p>
-              🎉 <strong>ThingsGateway</strong>  正在参加
-              <strong> Gitee 2025 最受欢迎的开源软件评选活动 </strong>，
-              需要你的支持！
-            </p>
-            <a
-              href="https://gitee.com/activity/2025opensource?ident=I4XWR9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="popup-link"
-            >
-              👉 前往投票支持
-            </a>
-            <button onClick={() => setShowPopup(false)} className="popup-close">
-              我知道了
-            </button>
-          </div>
-        </div>
-      )}
+
     </Layout>
   );
 }
