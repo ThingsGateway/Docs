@@ -53,13 +53,10 @@ export default function FooterLayout({
               href="https://gitee.com/activity/2025opensource?ident=I4XWR9"
               target="_blank"
               rel="noopener noreferrer"
-              className="popup-link"
+              className="popup-link" onClick={() => setShowPopup(false)}
             >
               👉 前往投票支持
             </a>
-            <button onClick={() => setShowPopup(false)} className="popup-close">
-              我知道了
-            </button>
           </div>
         </div>
       )}
